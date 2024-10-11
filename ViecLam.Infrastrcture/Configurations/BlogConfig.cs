@@ -10,26 +10,26 @@ namespace ViecLam.Infrastructure.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id)
-                .HasColumnName("id")
-                .UseIdentityColumn();
-
-            builder.Property(x => x.Image)
-                .HasColumnName("image");
+            builder.Property(x => x.ProductImage)
+                .HasColumnName("ProductImage");
 
             builder.Property(x => x.Heading)
-                .HasColumnName("heading");
+                .HasColumnName("Heading");
 
             builder.Property(x => x.SubHeading)
-                .HasColumnName("subHeading");
+                .HasColumnName("SubHeading");
 
             builder.Property(x => x.BlogDate)
-                .HasColumnName("blogDate");
+                .HasColumnName("BlogDate");
 
             builder.Property(x => x.BlogDetail)
-                .HasColumnName("blogDetail");
+                .HasColumnName("BlogDetail");
 
-            builder.ToTable("blogs");
+            builder.Property(x => x.ProductName)
+                .HasColumnName("ProductName")
+                .IsRequired();
+
+            builder.ToTable("Blog");
         }
     }
 }

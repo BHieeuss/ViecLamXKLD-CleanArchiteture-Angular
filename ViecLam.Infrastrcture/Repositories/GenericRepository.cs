@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using ViecLam.Application.Contracts.Persistances;
@@ -11,11 +13,12 @@ namespace ViecLam.Infrastructure.Repositories
     {
         private readonly AppDbContext dbContext;
         private readonly ILogger<GenericRepository<T>> logger;
-
-        public GenericRepository(AppDbContext dbContext, ILogger<GenericRepository<T>> logger)
+        private IWebHostEnvironment environment;
+        public GenericRepository(AppDbContext dbContext, ILogger<GenericRepository<T>> logger, IWebHostEnvironment env)
         {
             this.dbContext = dbContext;
             this.logger = logger;
+            this.environment = env;
         }
 
         public async Task<T> AddAsync(T entity)
@@ -77,6 +80,49 @@ namespace ViecLam.Infrastructure.Repositories
                 logger.LogError(ex, "Error updating entity in the database!");
                 throw;
             }
+        }
+
+        public Tuple<int, string> SaveImage(IFormFile imageFile)
+        {
+            try
+            {
+                var contentPath = this.environment.ContentRootPath;
+                // path = "c://projects/productminiapi/uploads" ,not exactly something like that
+                var path = Path.Combine(contentPath, "Uploads");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                // Check the allowed extenstions
+                var ext = Path.GetExtension(imageFile.FileName);
+                var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg" };
+                if (!allowedExtensions.Contains(ext))
+                {
+                    string msg = string.Format("Chỉ {0} được cho phép Upload!", string.Join(",", allowedExtensions));
+                    return new Tuple<int, string>(0, msg);
+                }
+                string uniqueString = Guid.NewGuid().ToString();
+                // we are trying to create a unique filename here
+                var newFileName = uniqueString + ext;
+                var fileWithPath = Path.Combine(path, newFileName);
+                var stream = new FileStream(fileWithPath, FileMode.Create);
+                imageFile.CopyTo(stream);
+                stream.Close();
+                return new Tuple<int, string>(1, newFileName);
+            }
+            catch (Exception ex)
+            {
+                return new Tuple<int, string>(0, "Error has occured");
+            }
+        }
+
+        public async Task DeleteImage(string imageFileName)
+        {
+            var contentPath = this.environment.ContentRootPath;
+            var path = Path.Combine(contentPath, $"Uploads", imageFileName);
+            if (File.Exists(path))
+                File.Delete(path);
         }
 
         public Task SaveChangeAsync() => dbContext.SaveChangesAsync();

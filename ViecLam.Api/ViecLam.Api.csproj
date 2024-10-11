@@ -16,4 +16,8 @@
     <ProjectReference Include="..\ViecLam.Presentation\ViecLam.Presentation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+
 </Project>

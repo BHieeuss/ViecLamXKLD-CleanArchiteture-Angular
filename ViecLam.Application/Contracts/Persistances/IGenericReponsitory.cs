@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading.Tasks;
 
 namespace ViecLam.Application.Contracts.Persistances
@@ -10,6 +11,8 @@ namespace ViecLam.Application.Contracts.Persistances
         Task DeleteAsync(object id);
         Task UpdateAsync(T entity);
         Task SaveChangeAsync();
+        Tuple<int, string> SaveImage(IFormFile imageFile);
+        Task DeleteImage(string imageFileName);
         IDbContextTransaction BeginTransaction();
     }
 }

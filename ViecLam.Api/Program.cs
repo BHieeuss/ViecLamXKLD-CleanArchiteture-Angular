@@ -1,31 +1,43 @@
-using ViecLam.Infrastructure.Extensions;
+using Microsoft.OpenApi.Models;
 using ViecLam.Application.Extensions;
-using ViecLam.Presentation.Endpoints;
+using ViecLam.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
-//Add persitence services
+
+// Add persistence services and application services
 builder.Services.AddInfrastructureServices(builder.Configuration);
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddApplicationServices();
+
+// Add Swagger/OpenAPI support
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "ViecLam API", Version = "v1" });
+    c.EnableAnnotations();
+});
+;
+
+// Add Services for ImageFile (uncomment if needed)
+// builder.Services.AddTransient<IFileService, FileService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseHsts();
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseHsts();
 }
 
 app.UseHttpsRedirection();
 
-app.MapBlogEndpoints();
+// Map custom endpoints
+//app.MapBlogEndpoints();
 
 app.UseAuthorization();
 

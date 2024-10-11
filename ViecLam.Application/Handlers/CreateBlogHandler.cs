@@ -5,6 +5,7 @@ using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
 using ViecLam.Domain.Entities;
 
+
 namespace ViecLam.Application.Handlers.BlogCommandHandlers
 {
     public class CreateBlogHandler : IRequestHandler<CreateBlogRequest, ServiceResponse>
@@ -24,13 +25,38 @@ namespace ViecLam.Application.Handlers.BlogCommandHandlers
             {
                 try
                 {
+                    // Lưu ảnh và nhận tên file
+                    string? imageFileName = null;
+                    string productName = null; // Khởi tạo productName
+
+                    if (request.ImageFile != null)
+                    {
+                        var imageResult = blogRepository.SaveImage(request.ImageFile);
+                        if (imageResult.Item1 == 1)
+                        {
+                            imageFileName = imageResult.Item2; // Lấy tên file ảnh
+                            productName = Path.GetFileNameWithoutExtension(imageFileName); // Lấy tên file không có phần mở rộng
+                        }
+                        else
+                        {
+                            return new ServiceResponse(
+                                IsSuccess: false,
+                                Message: imageResult.Item2,
+                                StatusCode: 400
+                            );
+                        }
+                    }
+
+                    // Kiểm tra nếu productName vẫn null, gán giá trị mặc định
+                    productName ??= "DefaultProductName";
+
                     // Ánh xạ thủ công từ CreateBlogRequest sang Blog
                     var blog = new Blog()
                     {
-                        Image = request.Image,
+                        ProductImage = imageFileName, // Lưu tên file ảnh vào trường ProductImage
+                        ProductName = productName, // Lưu tên sản phẩm từ file
                         Heading = request.Heading,
                         SubHeading = request.SubHeading,
-                        BlogDate = request.BlogDate,
                         BlogDetail = request.BlogDetail
                     };
 
@@ -58,10 +84,12 @@ namespace ViecLam.Application.Handlers.BlogCommandHandlers
                         IsSuccess: false,
                         Message: "Thêm blog thất bại",
                         StatusCode: 500,
-                        Errors: new List<string> { ex.Message }
+                        Errors: new List<string> { ex.InnerException?.Message ?? ex.Message }
                     );
                 }
             }
         }
     }
 }
+
+
