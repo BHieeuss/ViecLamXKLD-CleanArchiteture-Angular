@@ -51,18 +51,15 @@ namespace ViecLam.Presentation.Endpoints
             }).WithName("DeleteBlog");
 
             // Cập nhật Blog
-            blog.MapPut("/{id}", async (int id, HttpContext httpContext, [FromServices] IMediator mediator) =>
+            blog.MapPut("/", async (int id, HttpContext httpContext, [FromServices] IMediator mediator) =>
             {
                 var form = httpContext.Request.Form;
-
-                // Khởi tạo `UpdateBlogRequest` bằng cách sử dụng object initializer
-                var updateBlogRequest = new UpdateBlogRequest
+                var updateBlogRequest = new CreateBlogRequest
                 {
-                    Id = id,
+                    ImageFile = form.Files["ImageFile"],
                     Heading = form["Heading"],
                     SubHeading = form["SubHeading"],
-                    BlogDetail = form["BlogDetail"],
-                    ImageFile = form.Files["ImageFile"]
+                    BlogDetail = form["BlogDetail"]
                 };
 
                 var result = await mediator.Send(updateBlogRequest);

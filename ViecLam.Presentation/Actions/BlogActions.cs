@@ -40,21 +40,11 @@ namespace ViecLam.Presentation.Actions
             return StatusCode(result.StatusCode, result);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromForm] UpdateBlogRequest request)
+        [HttpPut]
+        public async Task<IActionResult> Update([FromForm] UpdateBlogRequest request)
         {
-            // Gán giá trị ID từ URL và tạo một đối tượng UpdateBlogRequest từ các dữ liệu nhận được
-            var updateRequest = new UpdateBlogRequest
-            {
-                Id = id,
-                Heading = request.Heading,
-                SubHeading = request.SubHeading,
-                BlogDetail = request.BlogDetail,
-                ImageFile = request.ImageFile,
-            };
+            var result = await _mediator.Send(request);
 
-            // Gửi yêu cầu tới MediatR
-            var result = await _mediator.Send(updateRequest);
             if (result.IsSuccess)
             {
                 return Ok(result);
@@ -62,5 +52,6 @@ namespace ViecLam.Presentation.Actions
 
             return StatusCode(result.StatusCode, result);
         }
+
     }
 }

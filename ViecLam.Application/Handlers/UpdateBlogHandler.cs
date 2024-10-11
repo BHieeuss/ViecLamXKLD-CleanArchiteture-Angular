@@ -4,10 +4,6 @@ using Microsoft.Extensions.Logging;
 using ViecLam.Application.Commands;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
-using ViecLam.Domain.Entities;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ViecLam.Application.Handlers.BlogCommandHandlers
 {
