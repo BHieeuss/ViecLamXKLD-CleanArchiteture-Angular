@@ -8,6 +8,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AdminComponent } from './admin/admin.component';
+import { NavAdminComponent } from './nav-admin/nav-admin.component';
 
 
 
@@ -17,6 +19,8 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
+    NavAdminComponent,
   ],
   imports: [
     BrowserModule,

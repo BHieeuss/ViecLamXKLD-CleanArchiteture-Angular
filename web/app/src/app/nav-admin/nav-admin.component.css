@@ -1,0 +1,38 @@
+.nav-container {
+  float: left;
+  width: 15%;
+  text-align: center;
+}
+nav {
+  color: #fff;
+  padding: 10px;
+}
+nav ul {
+  font-size: 20px;
+  font-weight: bold;
+  list-style-type: none;
+  padding: 0;
+  color: #333;
+}
+
+nav ul li {
+  margin-right: 20px;
+  margin: 25px;
+}
+nav li {
+  color: #333;
+  text-decoration: none;
+}
+nav li:hover {
+  cursor: pointer;
+  color: #8b322c;
+}
+header {
+  background-color: #dd5746;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+h4 {
+  color: #8b322c;
+}

@@ -5,11 +5,11 @@ import { BlogComponent } from './blog/blog.component';
 import { AboutComponent } from './about/about.component';
 import { BlogDetailComponent } from './blog/blog-detail/blog-detail.component';
 
-
 import { FullComponent } from './layout/full/full.component';
-
+import { AdminComponent } from '../admin/admin.component';
 
 const routes: Routes = [
+  { path: 'admin', component: AdminComponent },
   {
     path: '',
     component: FullComponent,
@@ -17,12 +17,12 @@ const routes: Routes = [
       { path: '', component: BlogComponent },
       { path: 'blogDetail/:id', component: BlogDetailComponent },
       { path: 'about', component: AboutComponent },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppsRoutingModule { }
+export class AppsRoutingModule {}
