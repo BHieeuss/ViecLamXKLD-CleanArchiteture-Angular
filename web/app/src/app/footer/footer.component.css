@@ -1,0 +1,53 @@
+.footer4 {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  border-top: 1px solid #e9ecef;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.footer4 .container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.round-social {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.round-social a.link {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin: 0 5px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  color: #343a40;
+  transition: all 0.3s ease;
+}
+
+.round-social a.link:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #6c757d;
+  margin-top: 20px;
+}
+
+.copyright a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  text-decoration: underline;
+}

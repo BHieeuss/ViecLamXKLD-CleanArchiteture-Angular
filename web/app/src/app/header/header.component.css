@@ -1,0 +1,147 @@
+body {
+  font-family: 'Montserrat', sans-serif; /* Đặt font cho toàn bộ trang */
+}
+
+.header-title {
+  font-family: 'Montserrat', sans-serif; /* Font cho tiêu đề */
+  font-size: 60px;
+  font-weight: 700; /* Độ đậm cho tiêu đề */
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.header-subtitle {
+  font-family: 'Montserrat', sans-serif; /* Font cho phụ đề */
+  font-size: 20px;
+  font-weight: 400; /* Độ dày bình thường */
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.nav ul li a {
+  font-family: 'Montserrat', sans-serif; /* Font cho các mục menu */
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600; /* Độ đậm chữ cho menu */
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+  color: #ff6b6b; /* Màu khi hover */
+}
+
+.btn-download,
+.hero-btn {
+  font-family: 'Montserrat', sans-serif; /* Font cho nút */
+  font-weight: 600; /* Độ đậm chữ cho nút */
+}
+
+.header {
+  background-image: url('../../assets/background.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 50px 0; /* Giảm padding để logo và menu sát lên trên */
+  position: relative;
+  width: 100%;
+  top: 0;
+  z-index: 1001;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Tăng độ tối của nền */
+  z-index: 1;
+}
+
+.header .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2; /* Đảm bảo logo và menu không bị ảnh hưởng bởi lớp overlay */
+}
+
+.nav {
+  background: rgba(0, 0, 0, 0.11); /* Mở rộng background và làm tối */
+  padding: 20px 40px; /* Mở rộng padding */
+  border-radius: 10px; /* Bo tròn góc */
+  display: flex;
+  justify-content: center; /* Đưa nav ra giữa */
+  align-items: center;
+  margin: 20px auto; /* Căn giữa với khoảng cách */
+  width: fit-content; /* Kích thước tự động điều chỉnh */
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav ul li {
+  margin-left: 30px;
+}
+
+.nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600; /* Độ dày chữ cho menu */
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+  color: #ff6b6b; /* Màu khi hover */
+}
+
+.content-wrapper {
+  padding-top: 150px; /* Tạo khoảng cách lớn hơn giữa header và nội dung */
+  padding-bottom: 100px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.header-title {
+  font-size: 60px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.header-subtitle {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-btn {
+  background: linear-gradient(45deg, #ff6b6b, #f06595);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  font-size: 18px;
+}
+
+.hero-btn:hover {
+  background: linear-gradient(45deg, #f06595, #ff6b6b);
+  color: #fff;
+}
