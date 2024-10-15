@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { LayoutComponent } from './layout/layout.component';
 import { BlogService } from './blog.service';  // Import BlogService
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
   template: `
-    <app-layout></app-layout> 
+    <router-outlet></router-outlet>
   `,
   standalone: true,
-  imports: [LayoutComponent, CommonModule],
+  imports: [RouterOutlet, CommonModule],
   providers: [BlogService]  
 })
 export class AppComponent implements OnInit {
@@ -21,10 +22,6 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit() {
-    this.blogService.getAllBlogs().subscribe((data) => {
-      this.blogs = data;
-    }, (error) => {
-      console.error('Error fetching blogs:', error);
-    });
+    
   }
 }

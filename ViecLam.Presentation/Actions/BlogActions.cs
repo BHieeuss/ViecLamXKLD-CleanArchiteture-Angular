@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ViecLam.Application.Commands;
-
+using Microsoft.AspNetCore.Hosting;
 namespace ViecLam.Presentation.Actions
 {
     [Route("api/[controller]")]
@@ -10,10 +10,11 @@ namespace ViecLam.Presentation.Actions
     public class BlogActions : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        public BlogActions(IMediator mediator)
+        private readonly IWebHostEnvironment _environment;
+        public BlogActions(IMediator mediator, IWebHostEnvironment environment)
         {
             _mediator = mediator;
+            _environment = environment; 
         }
 
         [HttpPost]
@@ -64,5 +65,30 @@ namespace ViecLam.Presentation.Actions
 
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBlogById(int id)
+        {
+            var result = await _mediator.Send(new GetByIdBlogRequest(id));
+
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet("images/{filename}")]
+        public IActionResult GetImage(string filename)
+        {
+            var contentPath = _environment.ContentRootPath;
+            var imagePath = Path.Combine(contentPath, "Uploads", filename);
+            if (System.IO.File.Exists(imagePath))
+            {
+                var image = System.IO.File.OpenRead(imagePath);
+                return File(image, "image/jpeg"); 
+            }
+            return NotFound();
+        }
+
     }
 }

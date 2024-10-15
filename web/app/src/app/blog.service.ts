@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 
-interface Blog
+export interface Blog
 {
   id: number;
   heading?: string;
@@ -24,5 +24,9 @@ export class BlogService {
 
   getAllBlogs(): Observable<Blog[]>{
     return this.http.get<Blog[]>(this.apiUrl); 
+  }
+  getBlogById(id: number): Observable<Blog> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Blog>(url);
   }
 }

@@ -86,6 +86,20 @@ namespace ViecLam.Presentation.Endpoints
                     await context.Response.WriteAsJsonAsync(result);
                 }
             }).WithName("GetAllBlogs");
+
+            //Lấy Blog
+            blog.MapGet("/{id}", async (int id, [FromServices] IMediator mediator) =>
+            {
+                var result = await mediator.Send(new GetByIdBlogRequest(id));
+
+                if (result.IsSuccess)
+                {
+                    return Results.Ok(result);
+                }
+
+                return Results.Json(result, statusCode: result.StatusCode);
+            }).WithName("GetBlogById");
+
             return app;
         }
     }

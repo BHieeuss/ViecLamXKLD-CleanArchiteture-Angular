@@ -1,0 +1,36 @@
+<app-header></app-header>
+<!-- Row  -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 no-trans">
+      <div class="mini-spacer">
+        <img [src]="'https://localhost:7168/api/BlogActions/images/' + blogDetail?.productImage" alt="wrapkit" class="img-fluid" />
+        <div class="d-flex align-items-center text-uppercase m-t-40 font-13 font-medium">
+          <a routerLink="" class="link"> <strong style="color: rgb(70, 71, 72);">By</strong> {{ blogDetail?.poster || 'Không xác định người đăng' }}</a>
+          <div class="ml-auto">
+            <a>{{ blogDetail?.blogDate | date:'mediumDate' }}</a>
+          </div>
+        </div>
+        <h2 class="title font-light">
+          {{ blogDetail?.heading }}
+        </h2>
+        <p class="m-t-30 m-b-30">
+          {{ blogDetail?.subHeading }}
+        </p>
+        <p class="m-t-30 m-b-30">
+          {{ blogDetail?.blogDetail }}
+        </p>
+
+        <div class="m-t-30">
+          <button type="button" class="btn bg-facebook btn-rounded mr-3">
+            <i class="fa fa-facebook"></i> Facebook
+          </button>
+          <button type="button" class="btn bg-twitter btn-rounded">
+            <i class="fa fa-twitter"></i> Twitter
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -109,7 +109,7 @@ namespace ViecLam.Infrastructure.Repositories
 
                 // Check the allowed extenstions
                 var ext = Path.GetExtension(imageFile.FileName);
-                var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg" };
+                var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg", ".pdf" };
                 if (!allowedExtensions.Contains(ext))
                 {
                     string msg = string.Format("Chỉ {0} được cho phép Upload!", string.Join(",", allowedExtensions));

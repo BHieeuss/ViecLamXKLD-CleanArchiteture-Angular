@@ -42,7 +42,7 @@ namespace ViecLam.Application.Handlers.BlogCommandHandlers
                     IsSuccess: true,
                     Message: "Lấy tất cả blog thành công",
                     StatusCode: 200,
-                    Data: blogList // Chuyển đổi sang dạng IReadOnlyList<object>
+                    Data: blogList
                 );
 
                 logger.LogInformation("Lấy tất cả blog thành công.");
