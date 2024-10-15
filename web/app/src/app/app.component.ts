@@ -1,12 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LayoutComponent } from './layout/layout.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
+import { BlogService } from './blog.service';  // Import BlogService
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
-  template: ` <app-layout></app-layout> `,
+  template: `
+    <app-layout></app-layout> 
+  `,
   standalone: true,
-  imports: [LayoutComponent],
+  imports: [LayoutComponent, CommonModule],
+  providers: [BlogService]  
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  blogs: any[] = [];
+
+  // Inject BlogService vào constructor
+  constructor(private blogService: BlogService) {}
+
+
+  ngOnInit() {
+    this.blogService.getAllBlogs().subscribe((data) => {
+      this.blogs = data;
+    }, (error) => {
+      console.error('Error fetching blogs:', error);
+    });
+  }
+}

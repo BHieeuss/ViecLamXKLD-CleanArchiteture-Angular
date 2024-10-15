@@ -1,68 +1,32 @@
 <div class="home-container">
-    <div class="recent-blogs">
-      <h2>Các đơn hàng có thể lựa chọn</h2>
-      <p class="intro-text">
-        Dưới là danh sách các đơn hàng được cập nhật mới nhất, có thể chọn ngay!
-      </p>
-      <div class="blogs-grid">
-        <div class="whats-new">
-          <h3>Tin tức mới !</h3>
-          <p>
-            Lùa hơn 100 con gà !
-          </p>
-        </div>
-        <div class="blogs-list">
-          <div class="blog-item">
-            <div class="blog-date">
-              <p>Feb 19, 2020</p>
-              <p>By Bá Nhân</p>
-            </div>
-            <div class="blog-content">
-              <h4>Kỹ sư IT</h4>
-              <p>
-                Tìm 100 kỹ sư It tại Tokyo!
-              </p>
-            </div>
-            <div class="blog-link">
-              <a href="#">Chi tiết →</a>
-            </div>
+  <div class="recent-blogs">
+    <h2>Các đơn hàng có thể lựa chọn</h2>
+    <p class="intro-text">
+      Dưới là danh sách các đơn hàng được cập nhật mới nhất, có thể chọn ngay!
+    </p>
+    <div class="blogs-grid">
+      <div class="whats-new">
+        <h3>Tin tức mới !</h3>
+        <p>
+          Lùa hơn 1100 con gà!
+        </p>
+      </div>
+
+      <div class="blogs-list">
+        <!-- Sử dụng *ngFor để lặp qua các blogs -->
+        <div class="blog-item" *ngFor="let blog of blogs">
+          <div class="blog-date">
+            <p>{{ blog.BlogDate | date:'shortDate' }}</p> 
+            <p>By {{ blog.Poster }}</p>    
+          <div class="blog-content">
+            <h4>{{ blog.Heading }}</h4>  
+            <p>{{ blog.SubHeading }}</p>   
           </div>
-  
-          <!-- Repeat the above block for other blog items -->
-          
-          <div class="blog-item">
-            <div class="blog-date">
-              <p>Feb 17, 2020</p>
-              <p>By John Deo</p>
-            </div>
-            <div class="blog-content">
-              <h4>Dolore pariatur amet ullamco aliquip mollit aliqua..</h4>
-              <p>
-                Eiusmod ipsum do dolore fugiat consequat quis non qui velit consectetur velit.
-              </p>
-            </div>
-            <div class="blog-link">
-              <a href="#">Show Detail →</a>
-            </div>
-          </div>
-  
-          <div class="blog-item">
-            <div class="blog-date">
-              <p>Feb 15, 2020</p>
-              <p>By John Deo</p>
-            </div>
-            <div class="blog-content">
-              <h4>Velit esse dolor dolor qui cillum velit in quis ex..</h4>
-              <p>
-                Adipisicing sit minim occaecat nulla proident exercitation do laboris.
-              </p>
-            </div>
-            <div class="blog-link">
-              <a href="#">Show Detail →</a>
-            </div>
+          <div class="blog-link">
+            <a href="#">Chi tiết →</a>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

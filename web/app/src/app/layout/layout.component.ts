@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { HeaderComponent } from '../header/header.component';
 import { HomeComponent } from '../home/home.component';
+
 
 @Component({
   selector: 'app-layout',
@@ -9,4 +10,6 @@ import { HomeComponent } from '../home/home.component';
   standalone: true,
   imports: [FooterComponent, HeaderComponent, HomeComponent],
 })
-export class LayoutComponent {}
+export class LayoutComponent {
+
+}
