@@ -1,4 +1,4 @@
-using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi.Models;
 using ViecLam.Application.Extensions;
 using ViecLam.Infrastructure.Extensions;
 
@@ -7,6 +7,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddAuthorization();
+
+// Add CORS support
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", builder =>
+    {
+        builder.WithOrigins("https://localhost:4200")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+             .AllowCredentials();
+});
+});
 
 // Add persistence services and application services
 builder.Services.AddInfrastructureServices(builder.Configuration);
@@ -19,10 +31,6 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ViecLam API", Version = "v1" });
     c.EnableAnnotations();
 });
-;
-
-// Add Services for ImageFile (uncomment if needed)
-// builder.Services.AddTransient<IFileService, FileService>();
 
 var app = builder.Build();
 
@@ -34,10 +42,9 @@ if (app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+app.UseCors("AllowAngular");
 
-// Map custom endpoints
-//app.MapBlogEndpoints();
+app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

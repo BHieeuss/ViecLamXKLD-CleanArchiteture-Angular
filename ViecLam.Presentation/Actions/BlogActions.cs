@@ -52,6 +52,17 @@ namespace ViecLam.Presentation.Actions
 
             return StatusCode(result.StatusCode, result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllBlogs()
+        {
+            var result = await _mediator.Send(new GetAllBlogsRequest());
 
+            if (result.IsSuccess)
+            {
+                return Ok(result);
+            }
+
+            return StatusCode(result.StatusCode, result);
+        }
     }
 }

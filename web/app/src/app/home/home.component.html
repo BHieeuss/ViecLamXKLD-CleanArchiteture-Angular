@@ -16,12 +16,13 @@
         <!-- Sử dụng *ngFor để lặp qua các blogs -->
         <div class="blog-item" *ngFor="let blog of blogs">
           <div class="blog-date">
-            <p>{{ blog.BlogDate | date:'shortDate' }}</p> 
-            <p>By {{ blog.Poster }}</p>    
+            <p>{{ blog.blogDate | date:'shortDate' }}</p> 
+            <p>By {{ blog.poster }}</p>    
+          </div> <!-- Thêm thẻ đóng -->
           <div class="blog-content">
-            <h4>{{ blog.Heading }}</h4>  
-            <p>{{ blog.SubHeading }}</p>   
-          </div>
+            <h4>{{ blog.heading }}</h4>  
+            <p>{{ blog.blogDetail }}</p>   
+          </div>          
           <div class="blog-link">
             <a href="#">Chi tiết →</a>
           </div>

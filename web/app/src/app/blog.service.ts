@@ -1,15 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // Đảm bảo bạn import đúng HttpClient
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
 
+interface Blog
+{
+  id: number;
+  heading?: string;
+  subHeading?: string;
+  poster?: string;
+  blogDate: Date;
+  blogDetail?: string;
+  productName: string;
+  productImage?: string;
+  imageFile?: File; 
+}
 @Injectable({
   providedIn: 'root'
 })
 export class BlogService {
   blog: any[] = [];
+  private apiUrl = 'https://localhost:7168/api/BlogActions'; 
   constructor(private http: HttpClient) {}
 
-  public getAllBlogs(): Observable<any> {
-    return this.http.get<any[]>('https://localhost:7168/api/BlogActions');
+  getAllBlogs(): Observable<Blog[]>{
+    return this.http.get<Blog[]>(this.apiUrl); 
   }
 }

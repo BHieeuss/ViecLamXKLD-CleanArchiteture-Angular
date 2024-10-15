@@ -9,6 +9,7 @@ namespace ViecLam.Domain.Entities
         public int Id { get; set; }
         public string? Heading { get; set; }
         public string? SubHeading { get; set; }
+        public string? Poster {  get; set; }
         public DateTime BlogDate { get; set; } = DateTime.Now;
         public string? BlogDetail { get; set; }
         [Required]

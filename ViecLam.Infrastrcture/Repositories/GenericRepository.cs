@@ -53,6 +53,19 @@ namespace ViecLam.Infrastructure.Repositories
             }
         }
 
+        public async Task<IEnumerable<T>> GetAllAsync()  // Thêm phương thức này
+        {
+            try
+            {
+                return await dbContext.Set<T>().ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Error retrieving entities from the database!");
+                throw;
+            }
+        }
+
         public async Task DeleteAsync(object id)
         {
             try

@@ -5,6 +5,14 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
 import bootstrap from './src/main.server';
 
+// Nếu sử dụng node-fetch@2
+const fetch = require('node-fetch');
+
+// Thêm fetch vào môi trường toàn cục
+if (typeof globalThis.fetch === 'undefined') {
+  globalThis.fetch = fetch;
+}
+
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();

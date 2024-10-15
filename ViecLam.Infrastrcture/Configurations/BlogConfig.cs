@@ -19,6 +19,9 @@ namespace ViecLam.Infrastructure.Configurations
             builder.Property(x => x.SubHeading)
                 .HasColumnName("SubHeading");
 
+            builder.Property(x => x.Poster)
+                .HasColumnName("Poster");
+
             builder.Property(x => x.BlogDate)
                 .HasColumnName("BlogDate");
 

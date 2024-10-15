@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 using System.Threading.Tasks;
+using ViecLam.Domain.Entities;
 
 namespace ViecLam.Application.Contracts.Persistances
 {
@@ -9,6 +10,7 @@ namespace ViecLam.Application.Contracts.Persistances
         Task<T> AddAsync(T entity);
         Task<T?> GetByIdAsync(object id);
         Task DeleteAsync(object id);
+        Task<IEnumerable<T>> GetAllAsync();
         Task UpdateAsync(T entity);
         Task SaveChangeAsync();
         Tuple<int, string> SaveImage(IFormFile imageFile);

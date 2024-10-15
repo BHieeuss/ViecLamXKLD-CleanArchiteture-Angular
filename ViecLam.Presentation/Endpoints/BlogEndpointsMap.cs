@@ -5,6 +5,7 @@ using ViecLam.Application.Commands;
 using ViecLam.Presentation.Actions;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ViecLam.Presentation.Endpoints
 {
@@ -22,6 +23,7 @@ namespace ViecLam.Presentation.Endpoints
                 {
                     ImageFile = form.Files["ImageFile"],
                     Heading = form["Heading"],
+                    Poster = form["Poster"],
                     SubHeading = form["SubHeading"],
                     BlogDetail = form["BlogDetail"]
                 };
@@ -66,6 +68,24 @@ namespace ViecLam.Presentation.Endpoints
 
                 return result.IsSuccess ? Results.Ok(result) : Results.Json(result, statusCode: result.StatusCode);
             }).WithName("UpdateBlog");
+
+            //Lấy tất cả
+            blog.MapGet("/", async (HttpContext context) =>
+            {
+                var mediator = context.RequestServices.GetRequiredService<IMediator>();
+                var result = await mediator.Send(new GetAllBlogsRequest());
+
+                if (result.IsSuccess)
+                {
+                    context.Response.StatusCode = StatusCodes.Status200OK;
+                    await context.Response.WriteAsJsonAsync(result);
+                }
+                else
+                {
+                    context.Response.StatusCode = result.StatusCode;
+                    await context.Response.WriteAsJsonAsync(result);
+                }
+            }).WithName("GetAllBlogs");
             return app;
         }
     }

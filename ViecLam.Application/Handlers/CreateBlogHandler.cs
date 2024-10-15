@@ -56,6 +56,7 @@ namespace ViecLam.Application.Handlers.BlogCommandHandlers
                         ProductImage = imageFileName, // Lưu tên file ảnh vào trường ProductImage
                         ProductName = productName, // Lưu tên sản phẩm từ file
                         Heading = request.Heading,
+                        Poster = request.Poster,
                         SubHeading = request.SubHeading,
                         BlogDetail = request.BlogDetail
                     };
