@@ -1,0 +1,148 @@
+body {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: normal;
+    background: #f8f9fd;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+a {
+    transition: .3s all ease;
+    color: #e3b04b;
+}
+a:hover, a:focus {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: none;
+}
+
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+    line-height: 1.5;
+    font-weight: 400;
+    font-family: 'Lato', Arial, sans-serif;
+    color: #000000;
+}
+
+.ftco-section {
+    padding: 7em 0;
+}
+
+.wrap {
+    width: 50%; /* Điều chỉnh chiều rộng */
+    overflow: hidden;
+    background: #ffffff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    margin: 0 auto; /* Đảm bảo căn giữa */
+}
+
+.login-wrap {
+    padding: 40px;
+    width: 100%; /* Đảm bảo form chiếm toàn bộ phần bao quanh */
+    background: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .wrap {
+        width: 80%; /* Thu nhỏ vùng trắng hơn trên màn hình nhỏ */
+    }
+
+    .login-wrap {
+        padding: 20px; /* Giảm padding để nhỏ gọn hơn trên màn hình nhỏ */
+    }
+}
+
+.form-group {
+    position: relative;
+}
+
+.label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000000;
+    font-weight: 700;
+}
+
+/* FORM CONTROL */
+.form-control {
+    height: 48px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+.form-control::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, .2) !important;
+}
+.form-control::-moz-placeholder {
+    color: rgba(0, 0, 0, .2) !important;
+}
+.form-control:-ms-input-placeholder {
+    color: rgba(0, 0, 0, .2) !important;
+}
+.form-control:-moz-placeholder {
+    color: rgba(0, 0, 0, .2) !important;
+}
+.form-control:focus, .form-control:active {
+    outline: none !important;
+    box-shadow: none;
+    border: 1px solid #e3b04b;
+}
+
+/* SOCIAL MEDIA */
+.social-media {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px; /* Tạo khoảng cách giữa social media và form */
+}
+.social-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(0, 0, 0, .05);
+    font-size: 16px;
+    margin-right: 5px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+.social-icon span {
+    color: rgba(0, 0, 0, .6);
+}
+.social-icon:hover, .social-icon:focus {
+    background: #e3b04b;
+}
+.social-icon:hover span, .social-icon:focus span {
+    color: #ffffff;
+}
+
+/* BUTTON */
+.btn {
+    cursor: pointer;
+    box-shadow: none !important;
+    font-size: 15px;
+    padding: 10px 20px;
+}
+
+.btn:hover, .btn:active, .btn:focus {
+    outline: none;
+}
+
+.btn-primary {
+    background: #e3b04b !important;
+    border: 1px solid #e3b04b !important;
+    color: #ffffff !important;
+}
+.btn-primary:hover {
+    border: 1px solid #e3b04b;
+    background: transparent;
+    color: #e3b04b;
+}

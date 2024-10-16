@@ -8,12 +8,17 @@ import { HomeComponent } from './app/home/home.component';
 import { BlogDetailComponent } from './app/blog-detail/blog-detail.component';
 import { provideRouter } from '@angular/router';
 import { LayoutComponent } from './app/layout/layout.component';
+import { LoginComponent } from './app/login/login.component';
+import { AdminPanelComponent } from './app/admin-panel/admin-panel.component';
+import { AuthGuard } from './app/auth.guard';
 
 registerLocaleData(localeVi, 'vi');
 
 const routes = [
   {path: '', component: LayoutComponent},
-  {path: 'blog/:id', component: BlogDetailComponent}
+  {path: 'blog/:id', component: BlogDetailComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard]},
 ];
 bootstrapApplication(AppComponent, {
   providers: [

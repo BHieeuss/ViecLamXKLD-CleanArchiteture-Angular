@@ -87,4 +87,60 @@
   .blog-link a:hover {
     text-decoration: underline;
   }
-  
+  /* Responsive cho máy tính bảng (max-width: 768px) */
+@media (max-width: 768px) {
+  .blogs-grid {
+    flex-direction: column; /* Chuyển sang bố cục cột trên màn hình nhỏ */
+    align-items: center;
+  }
+
+  .whats-new,
+  .blogs-list {
+    width: 100%; /* Đảm bảo cả hai khối chiếm toàn bộ chiều rộng */
+    text-align: center; /* Căn giữa văn bản */
+    margin-bottom: 30px;
+  }
+
+  .blog-item {
+    flex-direction: column; /* Sắp xếp các blog theo chiều dọc */
+    text-align: center;
+  }
+
+  .blog-date,
+  .blog-content,
+  .blog-link {
+    width: 100%; /* Mỗi phần tử chiếm 100% chiều rộng */
+    text-align: center; /* Căn giữa nội dung */
+    margin-bottom: 10px;
+  }
+}
+
+/* Responsive cho điện thoại (max-width: 768px) */
+@media (max-width: 768px) {
+  .blogs-grid {
+    flex-direction: column; /* Chuyển từ hàng ngang thành cột */
+    align-items: center; /* Căn giữa các mục */
+  }
+
+  .whats-new {
+    width: 100%; /* Đảm bảo mục "Tin tức mới!" chiếm toàn bộ chiều rộng */
+    margin-bottom: 20px; /* Tạo khoảng cách giữa "Tin tức mới" và phần danh sách blog */
+    text-align: center; /* Căn giữa nội dung */
+  }
+
+  .blogs-list {
+    width: 100%; /* Đảm bảo phần danh sách blog chiếm toàn bộ chiều rộng */
+  }
+
+  .blog-item {
+    flex-direction: column; /* Sắp xếp các mục blog theo cột */
+    text-align: center; /* Căn giữa nội dung */
+  }
+
+  .blog-date,
+  .blog-content,
+  .blog-link {
+    width: 100%; /* Mỗi phần tử chiếm 100% chiều rộng */
+    margin-bottom: 10px; /* Tạo khoảng cách giữa các phần tử */
+  }
+}
