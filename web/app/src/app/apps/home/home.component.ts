@@ -1,4 +1,4 @@
-import { BlogService } from '../blog.service';
+import { BlogService } from '../../blog.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';

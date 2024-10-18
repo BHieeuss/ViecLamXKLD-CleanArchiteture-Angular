@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from '../footer/footer.component';
-import { HeaderComponent } from '../header/header.component';
-import { AuthService } from '../auth.service';
+import { FooterComponent } from '../../footer/footer.component';
+import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
   selector: 'app-login',

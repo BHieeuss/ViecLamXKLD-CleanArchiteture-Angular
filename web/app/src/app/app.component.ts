@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LayoutComponent } from './layout/layout.component';
 import { BlogService } from './blog.service';  // Import BlogService
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';

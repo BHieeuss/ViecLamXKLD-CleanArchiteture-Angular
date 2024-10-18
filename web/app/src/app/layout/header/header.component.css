@@ -41,7 +41,7 @@ body {
 }
 
 .header {
-  background-image: url('../../assets/background.jpg');
+  background-image: url('../../../assets/background.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

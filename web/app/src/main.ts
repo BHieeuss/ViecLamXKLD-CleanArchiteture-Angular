@@ -4,15 +4,13 @@ import { AppComponent } from './app/app.component';
 import { registerLocaleData } from '@angular/common';
 import { importProvidersFrom, LOCALE_ID } from '@angular/core';
 import localeVi from '@angular/common/locales/vi';
-import { HomeComponent } from './app/home/home.component';
-import { BlogDetailComponent } from './app/blog-detail/blog-detail.component';
 import { provideRouter } from '@angular/router';
-import { LayoutComponent } from './app/layout/layout.component';
-import { LoginComponent } from './app/login/login.component';
-import { AdminPanelComponent } from './app/nav-admin/admin-panel.component';
 import { AuthGuard } from './app/auth.guard';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { BlogsManagerComponent } from './app/Blogs/blogs-manager/blogs-manager.component';
+import { LayoutComponent } from './app/layout/full/layout.component';
+import { BlogDetailComponent } from './app/apps/blog-detail/blog-detail.component';
+import { LoginComponent } from './app/apps/login/login.component';
+import { AdminPanelComponent } from './app/Area/nav-admin/admin-panel.component';
 
 registerLocaleData(localeVi, 'vi');
 
@@ -22,7 +20,7 @@ const routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], children:
     [
-      { path: 'blogsmanager', component: BlogsManagerComponent }
+      { path: 'blogsmanager', component:  BlogDetailComponent}
     ]
   },
 ];

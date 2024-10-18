@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AdminPanelComponent } from '../../nav-admin/admin-panel.component';
+import { AdminPanelComponent } from '../nav-admin/admin-panel.component';
 
 @Component({
   selector: 'app-blogs-manager',
