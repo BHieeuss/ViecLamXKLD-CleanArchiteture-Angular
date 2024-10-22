@@ -11,6 +11,7 @@ import { LayoutComponent } from './app/layout/full/layout.component';
 import { BlogDetailComponent } from './app/apps/blog-detail/blog-detail.component';
 import { LoginComponent } from './app/apps/login/login.component';
 import { AdminPanelComponent } from './app/Area/nav-admin/admin-panel.component';
+import { MiniChatComponent } from './app/apps/mini-chat/mini-chat.component';
 
 registerLocaleData(localeVi, 'vi');
 
@@ -18,6 +19,7 @@ const routes = [
   {path: '', component: LayoutComponent},
   {path: 'blog/:id', component: BlogDetailComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'chat', component: MiniChatComponent},
   {path: 'admin', component: AdminPanelComponent, canActivate: [AuthGuard], children:
     [
       { path: 'blogsmanager', component:  BlogDetailComponent}

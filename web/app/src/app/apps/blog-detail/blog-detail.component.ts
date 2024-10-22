@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef,Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Blog, BlogService } from '../../blog.service';
-import { FooterComponent } from '../../footer/footer.component';
+import { FooterComponent } from '../../layout/footer/footer.component';
 import { HeaderComponent } from '../../layout/header/header.component';
 
 @Component({
