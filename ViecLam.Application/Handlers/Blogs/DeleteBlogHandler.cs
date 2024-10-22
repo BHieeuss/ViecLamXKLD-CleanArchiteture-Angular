@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using ViecLam.Application.Commands;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using ViecLam.Application.Commands.Blogs;
 
-namespace ViecLam.Application.Handlers.BlogCommandHandlers
+namespace ViecLam.Application.Handlers.Blogs
 {
     public class DeleteBlogHandler : IRequestHandler<DeleteBlogRequest, ServiceResponse>
     {

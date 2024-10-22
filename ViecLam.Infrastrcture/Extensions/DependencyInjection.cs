@@ -16,6 +16,7 @@ namespace ViecLam.Infrastructure.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             // Registers the Blog
             services.AddScoped<IBlogRepository, BlogRepository>();
+            services.AddScoped<IMessageRepository, MessageRepository>();
             return services;
         }
     }

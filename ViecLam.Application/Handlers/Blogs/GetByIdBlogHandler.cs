@@ -1,15 +1,10 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ViecLam.Application.Commands;
+using ViecLam.Application.Commands.Blogs;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
 
-namespace ViecLam.Application.Handlers
+namespace ViecLam.Application.Handlers.Blogs
 {
     public class GetBlogByIdHandler : IRequestHandler<GetByIdBlogRequest, ServiceResponse>
     {
@@ -47,7 +42,7 @@ namespace ViecLam.Application.Handlers
                     Message: "Lấy blog thành công",
                     StatusCode: 200,
                     Data: blogList
-                );           
+                );
             }
             catch (Exception ex)
             {

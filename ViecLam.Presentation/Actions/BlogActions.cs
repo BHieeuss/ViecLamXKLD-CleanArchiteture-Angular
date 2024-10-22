@@ -1,8 +1,7 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using ViecLam.Application.Commands;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using ViecLam.Application.Commands.Blogs;
 namespace ViecLam.Presentation.Actions
 {
     [Route("api/[controller]")]

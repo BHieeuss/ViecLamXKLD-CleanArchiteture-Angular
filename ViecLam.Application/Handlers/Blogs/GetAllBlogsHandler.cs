@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using ViecLam.Application.Commands;
+using ViecLam.Application.Commands.Blogs;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
 using ViecLam.Domain.Entities;
 
-namespace ViecLam.Application.Handlers.BlogCommandHandlers
+namespace ViecLam.Application.Handlers.Blogs
 {
     public class GetAllBlogsHandler : IRequestHandler<GetAllBlogsRequest, ServiceResponse>
     {

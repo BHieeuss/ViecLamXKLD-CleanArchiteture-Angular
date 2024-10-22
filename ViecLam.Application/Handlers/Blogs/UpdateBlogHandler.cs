@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
-using ViecLam.Application.Commands;
+using ViecLam.Application.Commands.Blogs;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
 
-namespace ViecLam.Application.Handlers.BlogCommandHandlers
+namespace ViecLam.Application.Handlers.Blogs
 {
     public class UpdateBlogHandler : IRequestHandler<UpdateBlogRequest, ServiceResponse>
     {

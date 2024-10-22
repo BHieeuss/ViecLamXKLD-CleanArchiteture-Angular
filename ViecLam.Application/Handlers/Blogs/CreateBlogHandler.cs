@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using ViecLam.Application.Commands;
+using ViecLam.Application.Commands.Blogs;
 using ViecLam.Application.Contracts.Persistances;
 using ViecLam.Application.Response;
 using ViecLam.Domain.Entities;
 
 
-namespace ViecLam.Application.Handlers.BlogCommandHandlers
+namespace ViecLam.Application.Handlers.Blogs
 {
     public class CreateBlogHandler : IRequestHandler<CreateBlogRequest, ServiceResponse>
     {
@@ -27,7 +27,7 @@ namespace ViecLam.Application.Handlers.BlogCommandHandlers
                 {
                     // Lưu ảnh và nhận tên file
                     string? imageFileName = null;
-                    string productName = null; // Khởi tạo productName
+                    string productName = null;
 
                     if (request.ImageFile != null)
                     {
@@ -50,11 +50,10 @@ namespace ViecLam.Application.Handlers.BlogCommandHandlers
                     // Kiểm tra nếu productName vẫn null, gán giá trị mặc định
                     productName ??= "DefaultProductName";
 
-                    // Ánh xạ thủ công từ CreateBlogRequest sang Blog
                     var blog = new Blog()
                     {
-                        ProductImage = imageFileName, // Lưu tên file ảnh vào trường ProductImage
-                        ProductName = productName, // Lưu tên sản phẩm từ file
+                        ProductImage = imageFileName, 
+                        ProductName = productName,
                         Heading = request.Heading,
                         Poster = request.Poster,
                         SubHeading = request.SubHeading,

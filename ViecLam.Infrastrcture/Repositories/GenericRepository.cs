@@ -100,23 +100,20 @@ namespace ViecLam.Infrastructure.Repositories
             try
             {
                 var contentPath = this.environment.ContentRootPath;
-                // path = "c://projects/productminiapi/uploads" ,not exactly something like that
                 var path = Path.Combine(contentPath, "Uploads");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
 
-                // Check the allowed extenstions
                 var ext = Path.GetExtension(imageFile.FileName);
-                var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg", ".pdf" };
+                var allowedExtensions = new string[] { ".jpg", ".png", ".jpeg" };
                 if (!allowedExtensions.Contains(ext))
                 {
                     string msg = string.Format("Chỉ {0} được cho phép Upload!", string.Join(",", allowedExtensions));
                     return new Tuple<int, string>(0, msg);
                 }
                 string uniqueString = Guid.NewGuid().ToString();
-                // we are trying to create a unique filename here
                 var newFileName = uniqueString + ext;
                 var fileWithPath = Path.Combine(path, newFileName);
                 var stream = new FileStream(fileWithPath, FileMode.Create);
@@ -137,7 +134,6 @@ namespace ViecLam.Infrastructure.Repositories
             if (File.Exists(path))
                 File.Delete(path);
         }
-
         public Task SaveChangeAsync() => dbContext.SaveChangesAsync();
 
         public IDbContextTransaction BeginTransaction()

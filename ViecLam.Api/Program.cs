@@ -13,11 +13,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", builder =>
     {
-        builder.WithOrigins("https://localhost:4200")
+        builder.WithOrigins("https://localhost:4200", "http://localhost:4200")
                .AllowAnyHeader()
                .AllowAnyMethod()
-             .AllowCredentials();
-});
+               .AllowCredentials();
+    });
 });
 
 // Add persistence services and application services
@@ -42,12 +42,25 @@ if (app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Middleware setup
+
+// CORS middleware
 app.UseCors("AllowAngular");
 
+// WebSocket extension middleware
+app.UseWebSockets(); 
+app.UseCustomWebSocket();
+
+// TCP Socket Server extension
+app.UseTcpSocketServer();
+
+// HTTPS Redirection middleware
 app.UseHttpsRedirection();
 
+// Authorization middleware
 app.UseAuthorization();
 
+// Mapping controllers
 app.MapControllers();
 
 app.Run();
