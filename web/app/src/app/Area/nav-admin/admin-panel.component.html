@@ -1,25 +1,24 @@
 <mat-sidenav-container class="sidenav-container">
   <!-- Sidebar -->
-  <mat-sidenav #drawer class="sidenav" fixedInViewport mode="side" opened>
+  <mat-sidenav #drawer class="sidenav" mode="over" fixedInViewport>
 
     <!-- Sidebar Links -->
     <mat-nav-list>
       <mat-list-item>
-        <!-- Điều hướng trong admin, giữ lại nav -->
-        <a matLine routerLink="blogsmanager" routerLinkActive="active">Quản lý đơn hàng</a>
+        <a matLine routerLink="blogsmanager" routerLinkActive="active" (click)="drawer.toggle()">Quản lý đơn hàng</a>
       </mat-list-item>
       <mat-list-item>
-        <a>...</a>
+        <a matLine routerLink="other-page" routerLinkActive="active" (click)="drawer.toggle()">Trang khác</a>
       </mat-list-item>
     </mat-nav-list>
   </mat-sidenav>
 
   <!-- Content Area -->
-  <mat-sidenav-content>
+  <mat-sidenav-content class="content-fullscreen">
     <mat-toolbar color="primary">
-      <button mat-icon-button (click)="drawer.toggle()" class="menu-button">
+      <button mat-icon-button (click)="toggleDrawer()" class="menu-button">
         <mat-icon>menu</mat-icon>
-      </button>
+      </button>          
       <span class="toolbar-spacer"></span>
     </mat-toolbar>
 

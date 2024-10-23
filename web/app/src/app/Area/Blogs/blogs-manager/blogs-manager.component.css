@@ -1,0 +1,41 @@
+/* Đặt toàn bộ trang full màn hình */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+mat-sidenav-container {
+  height: 100vh; 
+  display: flex;
+}
+
+mat-sidenav {
+  width: 250px; /* Đặt chiều rộng cố định cho sidebar */
+  background-color: #f8f9fa;
+}
+
+mat-sidenav-content {
+  flex-grow: 3; /* Để nội dung lấp đầy không gian còn lại */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #ffffff;
+}
+
+.mat-toolbar {
+  width: 100%;
+  background-color: #3f51b5;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button {
+  margin-right: 15px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
